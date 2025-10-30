@@ -1,0 +1,35 @@
+.bg-secondary {
+    background-color: #2c3e50 !important;
+}
+.copyright {
+    background-color: #1a252f;
+}
+.bg-primary {
+    background-color: #1abc9c !important;
+}
+nav {
+    font-weight: 700;
+}
+.img-card {
+    height: 18vw;
+    object-fit: cover;
+}
+
+.img-fluid {
+    height: 100%;
+    object-fit: cover;
+}
+
+.rounded.pointer {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.rounded.pointer:hover {
+    transform: scale(1.1);
+}
+.custom-vr {
+        border-left: 2px solid rgb(70, 82, 97);
+        height: 40px;
+        margin: 0 10px;
+}
