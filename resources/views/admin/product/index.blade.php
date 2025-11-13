@@ -18,24 +18,24 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Name</label>
-                        <div class="col-lg-10 col-md-6 col-sm-12">
+                        <label class="form-label">Name</label>
+                        <div>
                             <input name="name" value="{{ old('name') }}" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Price</label>
-                        <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input name="price" value="{{ old('price') }}" type="number" class="form-control">
+                        <label class="form-label">Stock</label>
+                        <div>
+                            <input name="stock" value="{{ old('stock') }}" type="number" class="form-control">
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="mb-3 row">
+                    <div class="mb-3">
                         <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Image</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
                             <input class="form-control" type="file" name="image" id="imageInput">
@@ -49,6 +49,16 @@
             <div class="mb-3">
                 <img id="imagePreview" src="#" alt="Image Preview" class="img-fluid rounded"
                     style="display: none; max-width: 300px; max-height: 300px; margin-top: 10px;" />
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Price</label>
+                        <div>
+                            <input name="price" value="{{ old('price') }}" type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="category_id" class="form-label">Category</label>
@@ -77,6 +87,8 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Category</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -86,6 +98,7 @@
                 <tr>
                     <td>{{ $product->getId() }}</td>
                     <td>{{ $product->getName() }}</td>
+                    <td>{{ $product->getStock() }}</td>
                     <td>{{ $product->category->name }}</td>
                     <td>
                         <a class="btn btn-primary btn-sm"

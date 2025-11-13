@@ -76,16 +76,32 @@
                     <div class="mb-4">
                         <strong>Tình trạng:</strong>
                         @if ($viewData['product']->getStock() == 0)
-                        <span class="text-danger fw-bold">Hết hàng</span>
+                        <span class="text-danger fw-bold">HẾT HÀNG</span>
                         @else
-                        <span class="text-success fw-bold">Còn hàng</span>
+                        <span class="text-success fw-bold">CÒN HÀNG</span>
                         @endif
                     </div>
                     <div>
-                        <form method="GET" action="">
-                            @csrf
-                            <button type="submit" class="btn btn-primary btn-lg me-2">Thêm vào giỏ</button>
-                            <a href="#" class="btn btn-success btn-lg">Mua ngay</a>
+                        <form method="POST" action="{{ route('cart.add', ['id' =>$viewData['product']->getId()]) }}">
+                            <div class="row">
+                                @csrf
+                                <div class="col-auto">
+                                    <div class="input-group">
+                                        <div class="input-group-text">Số lượng</div>
+                                        <input type="number" min="1" max="10" class="form-controlquantity-input"
+                                            name="quantity" value="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-auto">
+                                    <button class="btn btn-primary btn-lg me-2" type="submit">Thêm vào giỏ</button>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="#" class="btn btn-success btn-lg">Mua ngay</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

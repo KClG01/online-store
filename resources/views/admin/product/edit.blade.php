@@ -21,18 +21,20 @@
             <div class="row">
                 <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Name:</label>
-                        <div class="col-lg-10 col-md-6 col-sm-12">
+                        <label class="form-label">Name:</label>
+                        <div>
                             <input name="name" value="{{$viewData['product']->getName() }}" type="text"
                                 class="form-control">
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col">
                     <div class="mb-3 row">
-                        <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Price:</label>
-                        <div class="col-lg-10 col-md-6 col-sm-12">
-                            <input name="price" value="{{$viewData['product']->getPrice() }}" type="number"
+                        <label class="form-label">Stock:</label>
+                        <div>
+                            <input name="stock" value="{{$viewData['product']->getStock() }}" type="number"
                                 class="form-control">
                         </div>
                     </div>
@@ -43,7 +45,6 @@
                     <div class="mb-3 row">
                         <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Image:</label>
                         <div class="col-lg-10 col-md-6 col-sm-12">
-                            {{-- SỬA LỖI 1: Thêm id="imageInput" --}}
                             <input class="form-control" type="file" name="image" id="imageInput">
                         </div>
                     </div>
@@ -53,10 +54,20 @@
                 </div>
             </div>
             <div class="mb-3">
-                {{-- SỬA LỖI 3: Hiển thị ảnh hiện tại của sản phẩm --}}
                 <img id="imagePreview" src="{{ asset('/storage/' . $viewData['product']->getImage()) }}"
                     alt="Image Preview" class="img-fluid rounded"
                     style="max-width: 300px; max-height: 300px; margin-top: 10px;" />
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3 row">
+                        <label class="form-label">Price:</label>
+                        <div>
+                            <input name="price" value="{{$viewData['product']->getPrice() }}" type="number"
+                                class="form-control">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="category_id" class="form-label">Category</label>

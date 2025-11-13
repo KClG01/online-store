@@ -64,12 +64,14 @@
                     <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
                     <a class="nav-link active" href="{{ route('product.index') }}">Product</a>
                     <a class="nav-link active" href="{{ route('home.about') }}">About</a>
-                    <a class="nav-link active" href="{{ route('admin.home.index') }}">Admin Page</a>
+                    <a class="nav-link active" href="{{ route('cart.index') }}">Cart</a>
                     <div class="custom-vr"></div>
                     @guest
                     <a class="nav-link active" href="{{ route('login')}}">Login</a>
                     <a class="nav-link active" href="{{ route('register')}}">Register</a>
                     @else
+
+                    <a class="nav-link active" href="{{ route('admin.home.index') }}">Admin Page</a>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
                             onclick="document.getElementById('logout').submit();">Logout</a>

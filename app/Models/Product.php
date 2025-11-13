@@ -22,6 +22,13 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public static function sumPriceByQuantities($products, $productInSession){
+        $total = 0;
+        foreach($products as $product){
+            $total += $product->getPrice() * $productInSession[$product->getId()];
+        }
+        return $total;
+    }
     // $this->attributes['id'];
     // $this->attributes['name'];
     // $this->attributes['description'];

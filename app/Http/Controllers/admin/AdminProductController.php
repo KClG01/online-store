@@ -24,7 +24,7 @@ class AdminProductController extends Controller
     
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,6 +36,7 @@ class AdminProductController extends Controller
             "name" => "required|max:255",
             "description" => "required",
             "price" => "required|numeric|gt:0", 
+            "stock" => "required|integer|gte:0",
             "image" => "image",
             "category_id" => "required|exists:categories,id"
         ]);
@@ -48,7 +49,7 @@ class AdminProductController extends Controller
         $newProduct->setName($request->input("name"));
         $newProduct->setDescription($request->input("description"));
         $newProduct->setPrice($request->input("price"));
-        $newProduct->setStock(0);
+        $newProduct->setStock($request->input("stock"));
         $newProduct->setCategoryId($request->input("category_id"));
         $newProduct->setImage("game.png");
         $newProduct->save();
@@ -95,6 +96,7 @@ class AdminProductController extends Controller
             "name" => "required|max:255",
             "description" => "required",
             "price" => "required|numeric|gt:0", 
+            "stock" => "required|integer|gte:0",
             "image" => "image",
             "category_id" => "required|exists:categories,id"
         ]);
@@ -103,6 +105,7 @@ class AdminProductController extends Controller
         $product->setName($request->input("name"));
         $product->setDescription($request->input("description"));
         $product->setPrice($request->input("price"));
+        $product->setStock($request->input("stock"));
         $product->setCategoryId($request->input("category_id"));
         if($request->hasFile('image')){
             $imageName = $product->getId().".".$request->file('image')->extension();

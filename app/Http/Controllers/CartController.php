@@ -3,20 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class CartController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $total = 0;
+        $productInCart = [];
+        $productInSession = $request->session()->get("products");
+        if($productInSession){
+            $productInCart = Product::findMany(array_keys($productInSession));
+            $total = Product::sumPriceByQuantities($productInCart, $productInSession);
+        }
+        
+        $viewData = [];
+        $viewData["title"] = "Cart - Online Store";
+        $viewData["total"] = $total;
+        $viewData["products"] = $productInCart;
+        
+        return view("cart.index")->with("viewData", $viewData);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function add(Request $request, $id){
+        $product = $request->session()->get("products");
+        $product[$id] = $request->input("quantity");
+        $request->session()->put("products", $product);
+
+        return redirect()->route("cart.index");
+    }
+
+    public function delete(Request $request){
+        $request->session()->forget("products");
+        return back();
+    }
+    
     public function create()
     {
         //
@@ -59,6 +83,6 @@ class CartController
      */
     public function destroy(string $id)
     {
-        //
+        
     }
 }
