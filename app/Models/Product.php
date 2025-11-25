@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Item;
 
 class Product extends Model
 {
@@ -104,5 +105,13 @@ class Product extends Model
     // public function setCategoryName($categoryName){
     //     $this->attributes['category_name'] = $categoryName;
     // }
-    
+    public function items() {
+        return $this->hasMany(Item::class);
+    }
+    public function getItems() {
+        return $this->items;
+    }
+    public function setItems($items) {
+        $this->items = $items;
+    }
 }

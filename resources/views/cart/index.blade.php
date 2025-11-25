@@ -31,12 +31,14 @@
             <div class="text-end">
                 <a class="btn btn-outline-secondary mb-2"><b>Tổng:</b>
                     {{ number_format($viewData['total'], 0, ',', '.')  }} ₫</a>
-                <a class="btn bg-primary text-white mb-2">Thanh toán</a>
+                @if (count($viewData["products"]) > 0)
+                <a href="{{ route('cart.purchase') }}" class="btn bg-primary text-white mb-2">Thanh toán</a>
                 <a href="{{ route('cart.delete') }}">
                     <button class="btn btn-danger mb-2">
                         Xóa tất cả
                     </button>
                 </a>
+                @endif
             </div>
         </div>
     </div>

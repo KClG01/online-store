@@ -72,6 +72,7 @@
                     @else
 
                     <a class="nav-link active" href="{{ route('admin.home.index') }}">Admin Page</a>
+                    <a class="nav-link active" href="{{ route('myaccount.order') }}">MyOrders</a>
                     <form id="logout" action="{{ route('logout') }}" method="POST">
                         <a role="button" class="nav-link active"
                             onclick="document.getElementById('logout').submit();">Logout</a>
